@@ -1,31 +1,46 @@
 <?php
 
-class user{
+class User {
     public $name;
     public $email;
     public $role;
 
-    function set_user_details($name,$email,$role){
+    function set_name($name){
         $this->name = $name;
+    }
+    function set_email($email){
         $this->email = $email;
+    }
+    function set_role($role){
         $this->role = $role;
     }
-    function get_user_details(){
-        echo "my name is:". $this->name."<br>".
-             "my email is:". $this->email."<br>".
-             "my role is:". $this->role. "<br>"."<br>";
+    function get_name(){
+        return $this->name;
+    }
+    function get_email(){
+        return $this->email;
+    }
+    function get_role(){
+        return $this->role;
     }
 
+    function display_user_details(){
+        echo 'my name is ' . $this->name . "<br>";
+        echo  "my email is " . $this->email . "<br>";
+        echo  "my role is " . $this->role . "<br> <br>";
+    }
+
+
 }
+$user1 = new User();
+$user1->set_name("Daniel");
+$user1->set_email("daniel@gmail.com");
+$user1->set_role("admin");
 
-$user1 = new user();
-$user1->set_user_details("daniel","ilalokhoindaniel@gmail.com","manager");
-$user1->get_user_details();
+$user2 = new User();
+$user2->set_name("Tayo");
+$user2->set_email("tayo@gmail.com");
+$user2->set_role("manager");
 
-$user2 = new user();
-$user2->set_user_details("chelsea","chelsea@gmail.com","accountant");
-$user2->get_user_details();
-
-
-?>
-
+$user1->display_user_details();
+$user2->display_user_details();

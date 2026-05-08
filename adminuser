@@ -1,0 +1,55 @@
+<?php
+
+class User {
+    protected $name;
+    protected $email;
+    protected $role;
+
+    public function __construct($name, $email, $role) {
+        $this->name = $name;
+        $this->email = $email;
+        $this->role = $role;
+    }
+
+    function get_name(){
+        return $this->name;
+    }
+
+    function get_email(){
+        return $this->email;
+    }
+
+    function get_role(){
+        return $this->role;
+    }
+
+    function display_user_details(){
+        echo "My name is " . $this->name . "<br>";
+        echo "My email is " . $this->email . "<br>";
+        echo "My role is " . $this->role . "<br><br>";
+    }
+}
+
+class AdminUser extends User {
+
+    public function __construct($name, $email) {
+        parent::__construct($name, $email, "admin");
+    }
+
+    public function delete_user($userName) {
+        echo $this->name . " deleted user: " . $userName . "<br>";
+    }
+}
+
+$user1 = new User("Daniel", "daniel@gmail.com", "user");
+$user2 = new User("Tayo", "tayo@gmail.com", "manager");
+
+$admin1 = new AdminUser("Sarah", "sarah@gmail.com");
+
+$user1->display_user_details();
+$user2->display_user_details();
+$admin1->display_user_details();
+
+$admin1->delete_user($user1->get_name());
+
+?>

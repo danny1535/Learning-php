@@ -2,6 +2,7 @@
 <?php
 session_start();
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,22 +18,41 @@ session_start();
     <label for="password">Password:</label>
     <input type="text" name = "password"><br>
     <input type="submit" name="login" id="">
+    <label>
+    Remember me
+    <input type="checkbox" name="remember">
+    </label> 
     </form>
 </body>
 </html>
 
 
 <?php
-if (isset($_POST["login"])){
-    if (!empty($_POST["username"]) && 
-        !empty($_POST["password"])){
+
+if(isset($_POST["login"])){
+    if(
+        !empty($_POST["username"]) && !empty($_POST["password"])
+    ){
         $_SESSION["username"] = $_POST["username"];
         $_SESSION["password"] = $_POST["password"];
-        
-        header("Location: dashboard.php");
+        if(isset($_POST["remember"])){
+            setcookie(
+                "username",
+                $_POST["username"],
+                time() + (86400 * 2)
+            );
+            setcookie(
+                "password",
+                $_POST["password"],
+                time() + (86400 * 2)
+            );
         }
+        header("Location: dashboard.php");
+    }
+    else{
+        echo "Please enter username and password";
+    }
 }
-
 
 
 

@@ -1,0 +1,35 @@
+#navbar{
+    background-color: black;
+}
+#navbar p{
+    color: white;
+}
+.btn-font{
+    background-color: #dfd3f8;
+    color: #712cf9;
+}
+.dark-btn-font{
+    background-color: #712cf9;
+}
+.project-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  float: left;
+}
+.card {
+  position: relative;
+  height: 200px;
+}
+
+.card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 150px;
+  object-fit: cover;
+}
+li{
+    text-decoration: none;
+}
